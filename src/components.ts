@@ -1,4 +1,7 @@
-import styled, { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from "styled-components";
+import { palette } from "./colours";
+
+const { primary } = palette;
 
 export const GlobalStyle = createGlobalStyle`
   html {
@@ -13,5 +16,6 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     font-family: Open-Sans, Helvetica, Sans-Serif;
+    background-color: ${primary};
   }
 `;

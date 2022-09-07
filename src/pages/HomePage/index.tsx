@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Container } from "./components";
 
 export const HomePage = () => {
   const navigate = useNavigate();
-  const [search, setSearch] = useState<string>("London");
+  const [search, setSearch] = useState<string>("");
 
   return (
-    <div>
+    <Container>
+      <label htmlFor="destination">Where do you want to go?</label>
       <input
+        id="destination"
         value={search}
+        placeholder="London, Brighton, Bristol"
         onChange={(event) => {
           setSearch(event.currentTarget.value);
         }}
@@ -16,6 +20,6 @@ export const HomePage = () => {
       <button type="submit" onClick={() => navigate(`/search?query=${search}`)}>
         Search
       </button>
-    </div>
+    </Container>
   );
 };
