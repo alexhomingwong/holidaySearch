@@ -12,6 +12,7 @@ export const LocationCard = (location: ILocations) => {
         <h2>{location.title}</h2>
         <p>{location.destination}</p>
       </div>
+      {/* Add a pagination nav here for the results */}
     </Card>
   );
 };
