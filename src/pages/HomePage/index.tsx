@@ -5,7 +5,7 @@ import { Container } from "./components";
 
 export const HomePage = () => {
   const navigate = useNavigate();
-  const [search, setSearch] = useState<string>("London");
+  const [search, setSearch] = useState<string>("");
 
   return (
     <Container>
