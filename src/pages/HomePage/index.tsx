@@ -17,7 +17,11 @@ export const HomePage = () => {
           setSearch(event.currentTarget.value);
         }}
       />
-      <button type="submit" onClick={() => navigate(`/search?query=${search}`)}>
+      <button
+        disabled={!Boolean(search)}
+        type="submit"
+        onClick={() => navigate(`/search?query=${search}`)}
+      >
         Search
       </button>
     </Container>

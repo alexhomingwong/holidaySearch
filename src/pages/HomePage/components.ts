@@ -33,5 +33,9 @@ export const Container = styled.div`
     border-radius: 0.5rem;
     font-size: 1rem;
     color: ${white};
+    cursor: pointer;
+    :disabled {
+      opacity: 0.5;
+    }
   }
 `;
