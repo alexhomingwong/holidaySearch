@@ -1,24 +1,44 @@
 import React from "react";
 import { useLocations } from "./useLocations";
 import { useNavigate } from "react-router-dom";
+import { Message, Container } from "./components";
+import { Button } from "../../components";
+import { LocationCard } from "./LocationCard";
 
 export const LocationPage = () => {
   const { queryLocation, locations, loading, error } = useLocations();
   const navigate = useNavigate();
 
-  if (loading) return <div>loading...</div>;
-  if (error) return <div>Sorry, there was an error. {error.message}</div>;
+  if (loading)
+    return (
+      <Container>
+        <Message>loading...</Message>
+      </Container>
+    );
+
+  if (error)
+    return (
+      <Container>
+        <Message>Sorry, there was an error. {error.message}</Message>
+      </Container>
+    );
+
+  if (locations.length === 0)
+    return (
+      <Container>
+        <Message>Sorry, nothing matched your query.</Message>
+        <Button type="button" onClick={() => navigate(`/`)}>
+          Please go back and try again.
+        </Button>
+      </Container>
+    );
 
   return (
-    <div>
+    <Container>
       <h1>{queryLocation || "Show me everything!"}</h1>
       {locations.map((location) => (
-        <div key={location.id} onClick={() => navigate(`/sale/${location.id}`)}>
-          <p>{location.title}</p>
-          <p>{location.destination}</p>
-          <img src={location.photo} />
-        </div>
+        <LocationCard key={location.id} {...location} />
       ))}
-    </div>
+    </Container>
   );
 };

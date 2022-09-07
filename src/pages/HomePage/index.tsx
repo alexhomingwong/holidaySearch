@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "../../components";
 import { Container } from "./components";
 
 export const HomePage = () => {
   const navigate = useNavigate();
-  const [search, setSearch] = useState<string>("");
+  const [search, setSearch] = useState<string>("London");
 
   return (
     <Container>
@@ -17,13 +18,13 @@ export const HomePage = () => {
           setSearch(event.currentTarget.value);
         }}
       />
-      <button
+      <Button
         disabled={!Boolean(search)}
         type="submit"
         onClick={() => navigate(`/search?query=${search}`)}
       >
         Search
-      </button>
+      </Button>
     </Container>
   );
 };

@@ -25,17 +25,4 @@ export const Container = styled.div`
     color: ${primary};
     text-align: center;
   }
-  > button {
-    background-color: ${secondary};
-    border: none;
-    outline: none;
-    padding: 0.5rem 2rem;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    color: ${white};
-    cursor: pointer;
-    :disabled {
-      opacity: 0.5;
-    }
-  }
 `;
