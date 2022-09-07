@@ -19,3 +19,23 @@ export const SALE_SEARCH_QUERY = (location: string) => gql`
     }
   }
 `;
+
+export const SALE_QUERY = (id: string) => gql`
+  {
+    sale(saleId: "${id}") {
+      editorial {
+        title
+        destinationName
+        hotelDetails
+      }
+      prices {
+        leadRate {
+          forDisplay
+        }
+      }
+      photos {
+        url
+      }
+    }
+  }
+`;
