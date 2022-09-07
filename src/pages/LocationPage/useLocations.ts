@@ -13,10 +13,13 @@ export const useLocations = () => {
     ? data.saleSearch.sales
     : [];
 
+  const totalResults = data?.saleSearch?.resultCount || locations.length;
+
   return {
     queryLocation,
     locations: formatSaleSearch(locations),
     loading,
     error,
+    totalResults,
   };
 };

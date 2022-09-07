@@ -6,7 +6,8 @@ import { Button } from "../../components";
 import { LocationCard } from "./LocationCard";
 
 export const LocationPage = () => {
-  const { queryLocation, locations, loading, error } = useLocations();
+  const { queryLocation, locations, loading, error, totalResults } =
+    useLocations();
   const navigate = useNavigate();
 
   if (loading)
@@ -36,6 +37,7 @@ export const LocationPage = () => {
   return (
     <Container>
       <h1>{queryLocation || "Show me everything!"}</h1>
+      <p>Found {totalResults} places that matched your search.</p>
       {locations.map((location) => (
         <LocationCard key={location.id} {...location} />
       ))}

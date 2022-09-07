@@ -13,6 +13,11 @@ export const Container = styled.div`
   gap: 1rem;
   > h1 {
     color: ${white};
+    margin: 0;
+  }
+  > p {
+    color: ${white};
+    margin: 0;
   }
 `;
 
