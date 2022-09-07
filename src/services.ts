@@ -10,9 +10,27 @@ export const formatSaleSearch = (data: any[]): ILocations[] => {
   return data.map((location) => {
     return {
       id: location?.id || "",
-      photo: location?.photos?.[0]?.url || "", // Always grab the first photo for simplicity
+      photo: location?.photos?.[0]?.url || "", // Assumes first photo is lead photo
       destination: location?.editorial?.destinationName || "",
       title: location?.editorial?.title || "",
     };
   });
+};
+
+export interface ISaleDetail {
+  title: string;
+  destination: string;
+  photo: string;
+  hotelDetails: string;
+  price: string;
+}
+
+export const formatSaleDetail = (data: Record<string, any>) => {
+  return {
+    title: data?.editorial?.title || "",
+    destination: data?.editorial?.destinationName || "",
+    photo: data?.photos?.[0]?.url || "", // Assumes first photo is lead photo
+    hotelDetails: data?.editorial?.hotelDetails || "",
+    price: data?.prices?.leadRate?.forDisplay || "",
+  };
 };
