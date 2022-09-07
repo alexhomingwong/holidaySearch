@@ -1,18 +1,19 @@
-import React from "react";
-import { useSearch } from "./useSearch";
-import { useLazyQuery } from "@apollo/client";
-import { SALE_SEARCH_QUERY } from "../../api";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const HomePage = () => {
-  const { search, onSearchChange } = useSearch();
-  const [getSales, { data, loading, error }] = useLazyQuery(
-    SALE_SEARCH_QUERY(search)
-  );
-  console.log(data);
+  const navigate = useNavigate();
+  const [search, setSearch] = useState<string>("London");
+
   return (
     <div>
-      <input value={search} onChange={onSearchChange} />
-      <button type="submit" onClick={() => getSales()}>
+      <input
+        value={search}
+        onChange={(event) => {
+          setSearch(event.currentTarget.value);
+        }}
+      />
+      <button type="submit" onClick={() => navigate(`/search?query=${search}`)}>
         Search
       </button>
     </div>
